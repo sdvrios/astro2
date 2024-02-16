@@ -1,0 +1,45 @@
+---
+import tendencias from '../datos/tendencias.json';
+
+const ruta="/astro2/peliculas";
+---
+<section class="container text-white-50 pb-5">
+
+        <h3 class="text-center py-3">Tendencias</h3>
+        <div class="tendencias" id="mostrarTendencias">
+        {
+            tendencias.map((item)=>(
+                <img 
+				src={ruta+item.poster_path} 
+				alt="pelicula" 
+				title={item.title}
+				data-bs-toggle="modal" 
+                data-bs-target="#exampleModal"
+                data-id={item.id}
+				>
+            ))
+        }
+        </div>
+
+</section>
+<style>
+	.tendencias{
+		display: flex;
+		gap: 10px;
+		overflow-x: auto;
+		padding: 10px;
+		background-color: black;
+		border-radius: 5px;
+		
+	}
+	.tendencias img{
+		width: 150px;
+		transition: all 0.9s;
+		border-radius: 5px;
+	}
+	.tendencias img:hover{
+		box-shadow: 1px 1px 5px #ccc;
+		cursor: pointer;
+		transform: scale(1.02);
+	}
+</style>
